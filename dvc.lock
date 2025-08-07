@@ -1,0 +1,25 @@
+schema: '2.0'
+stages:
+  _check-env-main:
+    cmd: calkit check environment --name main
+    deps:
+    - path: Project.toml
+      hash: md5
+      md5: fc9ba5906e874d7fe677b169b41774e5
+      size: 58
+    outs:
+    - path: Manifest.toml
+      hash: md5
+      md5: 822d1c9663f1c8c93983497c07373e89
+      size: 12615
+  run-script:
+    cmd: calkit xenv -n main --no-check -- "include(\"scripts/main.jl\")"
+    deps:
+    - path: Manifest.toml
+      hash: md5
+      md5: 822d1c9663f1c8c93983497c07373e89
+      size: 12615
+    - path: scripts/main.jl
+      hash: md5
+      md5: b92a45653c516b9ccab2e0512553870f
+      size: 36

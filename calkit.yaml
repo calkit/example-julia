@@ -5,3 +5,9 @@ environments:
   main:
     kind: julia
     path: Project.toml
+pipeline:
+  stages:
+    run-script:
+      kind: julia-script
+      script_path: scripts/main.jl
+      environment: main
