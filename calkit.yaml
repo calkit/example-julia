@@ -5,6 +5,10 @@ environments:
   main:
     kind: julia
     path: Project.toml
+  tex:
+    kind: docker
+    image: texlive/texlive:latest-full
+    description: TeXlive full.
 pipeline:
   stages:
     run-script:
@@ -14,6 +18,26 @@ pipeline:
       outputs:
         - figures/circle-flow.png
         - figures/circle-forces.png
+    build-paper:
+      kind: latex
+      environment: tex
+      wdir:
+      inputs: []
+      outputs:
+        - pubs/conf-paper-1/paper.pdf
+      always_run: false
+      iterate_over:
+      description:
+      target_path: pubs/conf-paper-1/paper.tex
+      verbose: false
+      force: false
+      synctex: true
 showcase:
   - figure: figures/circle-flow.png
   - figure: figures/circle-forces.png
+publications:
+  - path: pubs/conf-paper-1/paper.pdf
+    kind: conference-paper
+    title: This is the paper
+    description: The first conference paper on this work.
+    stage: build-paper
