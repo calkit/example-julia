@@ -24,6 +24,11 @@ pipeline:
       inputs:
         - from_stage_outputs: run-script
       target_path: pubs/conf-paper-1/paper.tex
+figures:
+  - path: figures/circle-flow.png
+    title: Flow around a circle.
+  - path: figures/circle-forces.png
+    title: Forces on a circle.
 showcase:
   - figure: figures/circle-flow.png
   - figure: figures/circle-forces.png
