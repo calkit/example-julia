@@ -27,8 +27,10 @@ pipeline:
 figures:
   - path: figures/circle-flow.png
     title: Flow around a circle.
+    stage: run-script
   - path: figures/circle-forces.png
     title: Forces on a circle.
+    stage: run-script
 showcase:
   - figure: figures/circle-flow.png
   - figure: figures/circle-forces.png
