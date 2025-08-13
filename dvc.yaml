@@ -16,6 +16,8 @@ stages:
     deps:
       - scripts/main.jl
       - Manifest.toml
-    outs: []
+    outs:
+      - figures/circle-flow.png
+      - figures/circle-forces.png
     desc: Automatically generated from the 'run-script' stage in 
       calkit.yaml. Changes made here will be overwritten.

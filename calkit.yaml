@@ -11,3 +11,9 @@ pipeline:
       kind: julia-script
       script_path: scripts/main.jl
       environment: main
+      outputs:
+        - figures/circle-flow.png
+        - figures/circle-forces.png
+showcase:
+  - figure: figures/circle-flow.png
+  - figure: figures/circle-forces.png

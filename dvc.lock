@@ -5,21 +5,30 @@ stages:
     deps:
     - path: Project.toml
       hash: md5
-      md5: fc9ba5906e874d7fe677b169b41774e5
-      size: 58
+      md5: e916c4cecc38f45280605529a99bcae6
+      size: 105
     outs:
     - path: Manifest.toml
       hash: md5
-      md5: 822d1c9663f1c8c93983497c07373e89
-      size: 12615
+      md5: 969cbb68401041de738b6ec12481dbfe
+      size: 44856
   run-script:
     cmd: calkit xenv -n main --no-check -- "include(\"scripts/main.jl\")"
     deps:
     - path: Manifest.toml
       hash: md5
-      md5: 822d1c9663f1c8c93983497c07373e89
-      size: 12615
+      md5: 969cbb68401041de738b6ec12481dbfe
+      size: 44856
     - path: scripts/main.jl
       hash: md5
-      md5: b92a45653c516b9ccab2e0512553870f
-      size: 36
+      md5: f157952fd8fe9bc523d78e27727a4b35
+      size: 1098
+    outs:
+    - path: figures/circle-flow.png
+      hash: md5
+      md5: 855f98b203cd4cb3ca9d95cb9ba7b451
+      size: 48938
+    - path: figures/circle-forces.png
+      hash: md5
+      md5: 34237fe799120c92c6f61ae0a67c1015
+      size: 32947
