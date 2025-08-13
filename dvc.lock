@@ -32,3 +32,35 @@ stages:
       hash: md5
       md5: 34237fe799120c92c6f61ae0a67c1015
       size: 32947
+  _check-env-tex:
+    cmd: calkit check environment --name tex
+    outs:
+    - path: .calkit/env-locks/tex.json
+      hash: md5
+      md5: 90c1a729e822095aa38a57614861a4fe
+      size: 1171
+  build-paper:
+    cmd: calkit xenv -n tex --no-check -- latexmk -cd -interaction=nonstopmode 
+      -silent -synctex=1 -pdf pubs/conf-paper-1/paper.tex
+    deps:
+    - path: .calkit/env-locks/tex.json
+      hash: md5
+      md5: 90c1a729e822095aa38a57614861a4fe
+      size: 1171
+    - path: figures/circle-flow.png
+      hash: md5
+      md5: 855f98b203cd4cb3ca9d95cb9ba7b451
+      size: 48938
+    - path: figures/circle-forces.png
+      hash: md5
+      md5: 34237fe799120c92c6f61ae0a67c1015
+      size: 32947
+    - path: pubs/conf-paper-1/paper.tex
+      hash: md5
+      md5: 6e6c332a6c73fd0403f9f6569164daad
+      size: 634
+    outs:
+    - path: pubs/conf-paper-1/paper.pdf
+      hash: md5
+      md5: 6d479f52ae9370d2297f27d775560099
+      size: 115095

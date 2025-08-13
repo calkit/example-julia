@@ -21,17 +21,9 @@ pipeline:
     build-paper:
       kind: latex
       environment: tex
-      wdir:
-      inputs: []
-      outputs:
-        - pubs/conf-paper-1/paper.pdf
-      always_run: false
-      iterate_over:
-      description:
+      inputs:
+        - from_stage_outputs: run-script
       target_path: pubs/conf-paper-1/paper.tex
-      verbose: false
-      force: false
-      synctex: true
 showcase:
   - figure: figures/circle-flow.png
   - figure: figures/circle-forces.png
