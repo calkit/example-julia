@@ -5,6 +5,7 @@ environments:
   main:
     kind: julia
     path: Project.toml
+    julia: "1.11"
   tex:
     kind: docker
     image: texlive/texlive:latest-full
