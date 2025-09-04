@@ -1,6 +1,8 @@
+owner: calkit
 name: example-julia
 title: Calkit Julia example
 description: This project shows how to use Julia with Calkit.
+git_repo_url: https://github.com/calkit/example-julia
 environments:
   main:
     kind: julia
