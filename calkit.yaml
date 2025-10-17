@@ -8,7 +8,7 @@ environments:
   main:
     kind: julia
     path: Project.toml
-    julia: "1.11"
+    julia: "1.11.7"
   tex:
     kind: docker
     image: texlive/texlive:latest-full
@@ -29,7 +29,6 @@ pipeline:
       notebook_path: notebooks/main.ipynb
       html_storage: git
       executed_ipynb_storage: git
-      cleaned_ipynb_storage: null
     build-paper:
       kind: latex
       environment: tex
