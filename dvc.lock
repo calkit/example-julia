@@ -5,20 +5,20 @@ stages:
     deps:
     - path: Project.toml
       hash: md5
-      md5: e916c4cecc38f45280605529a99bcae6
-      size: 105
+      md5: d41e623ffcc9c98b51f5a25361fa912d
+      size: 153
     outs:
     - path: Manifest.toml
       hash: md5
-      md5: 969cbb68401041de738b6ec12481dbfe
-      size: 44856
+      md5: 8a058c34bcadc2cafeed5f0a04d72cc3
+      size: 45917
   run-script:
     cmd: calkit xenv -n main --no-check -- "include(\"scripts/main.jl\")"
     deps:
     - path: Manifest.toml
       hash: md5
-      md5: 969cbb68401041de738b6ec12481dbfe
-      size: 44856
+      md5: 8a058c34bcadc2cafeed5f0a04d72cc3
+      size: 45917
     - path: scripts/main.jl
       hash: md5
       md5: f157952fd8fe9bc523d78e27727a4b35
@@ -37,15 +37,16 @@ stages:
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 90c1a729e822095aa38a57614861a4fe
+      md5: bb1df3bd963f21fe4bfe580f00891bbe
       size: 1171
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd -interaction=nonstopmode 
-      -silent -synctex=1 -pdf pubs/conf-paper-1/paper.tex
+    cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc 
+      -interaction=nonstopmode -silent -synctex=1 -pdf 
+      pubs/conf-paper-1/paper.tex
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 90c1a729e822095aa38a57614861a4fe
+      md5: bb1df3bd963f21fe4bfe580f00891bbe
       size: 1171
     - path: figures/circle-flow.png
       hash: md5
@@ -62,5 +63,38 @@ stages:
     outs:
     - path: pubs/conf-paper-1/paper.pdf
       hash: md5
-      md5: 6d479f52ae9370d2297f27d775560099
-      size: 115095
+      md5: afbfc3d22022848c57da7bbdafdfe7a8
+      size: 115037
+  _clean-nb-run-notebook:
+    cmd: calkit nb clean "notebooks/main.ipynb"
+    deps:
+    - path: notebooks/main.ipynb
+      hash: md5
+      md5: 8cd869681877e51ef52b934016ee865e
+      size: 475522
+    outs:
+    - path: .calkit/notebooks/cleaned/notebooks/main.ipynb
+      hash: md5
+      md5: 6dd79385ea18587a2cee25225db731bc
+      size: 1934
+  run-notebook:
+    cmd: calkit nb execute --environment main --no-check --language python --to 
+      html "notebooks/main.ipynb"
+    deps:
+    - path: .calkit/notebooks/cleaned/notebooks/main.ipynb
+      hash: md5
+      md5: 6dd79385ea18587a2cee25225db731bc
+      size: 1934
+    - path: Manifest.toml
+      hash: md5
+      md5: 8a058c34bcadc2cafeed5f0a04d72cc3
+      size: 45917
+    outs:
+    - path: .calkit/notebooks/executed/notebooks/main.ipynb
+      hash: md5
+      md5: 32375337f596459729716a90f2cdb82c
+      size: 476848
+    - path: .calkit/notebooks/html/notebooks/main.html
+      hash: md5
+      md5: f6dd7bf259a8c06a209b046c6229a083
+      size: 388196

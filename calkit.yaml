@@ -3,6 +3,7 @@ name: example-julia
 title: Calkit Julia example
 description: This project shows how to use Julia with Calkit.
 git_repo_url: https://github.com/calkit/example-julia
+
 environments:
   main:
     kind: julia
@@ -12,6 +13,7 @@ environments:
     kind: docker
     image: texlive/texlive:latest-full
     description: TeXlive full.
+
 pipeline:
   stages:
     run-script:
@@ -21,12 +23,20 @@ pipeline:
       outputs:
         - figures/circle-flow.png
         - figures/circle-forces.png
+    run-notebook:
+      kind: jupyter-notebook
+      environment: main
+      notebook_path: notebooks/main.ipynb
+      html_storage: git
+      executed_ipynb_storage: git
+      cleaned_ipynb_storage: null
     build-paper:
       kind: latex
       environment: tex
       inputs:
         - from_stage_outputs: run-script
       target_path: pubs/conf-paper-1/paper.tex
+
 figures:
   - path: figures/circle-flow.png
     title: Flow around a circle.
@@ -34,9 +44,15 @@ figures:
   - path: figures/circle-forces.png
     title: Forces on a circle.
     stage: run-script
+
+notebooks:
+  - path: notebooks/main.ipynb
+    title: Main notebook
+
 showcase:
   - figure: figures/circle-flow.png
   - figure: figures/circle-forces.png
+
 publications:
   - path: pubs/conf-paper-1/paper.pdf
     kind: conference-paper

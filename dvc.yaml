@@ -31,8 +31,30 @@ stages:
       - figures/circle-forces.png
     desc: Automatically generated from the 'run-script' stage in 
       calkit.yaml. Changes made here will be overwritten.
+  _clean-nb-run-notebook:
+    cmd: calkit nb clean "notebooks/main.ipynb"
+    deps:
+      - notebooks/main.ipynb
+    outs:
+      - .calkit/notebooks/cleaned/notebooks/main.ipynb:
+          cache: false
+    desc: Automatically generated from the 'run-notebook' stage in 
+      calkit.yaml. Changes made here will be overwritten.
+  run-notebook:
+    cmd: calkit nb execute --environment main --no-check --language 
+      python --to html "notebooks/main.ipynb"
+    deps:
+      - .calkit/notebooks/cleaned/notebooks/main.ipynb
+      - Manifest.toml
+    outs:
+      - .calkit/notebooks/executed/notebooks/main.ipynb:
+          cache: false
+      - .calkit/notebooks/html/notebooks/main.html:
+          cache: false
+    desc: Automatically generated from the 'run-notebook' stage in 
+      calkit.yaml. Changes made here will be overwritten.
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd 
+    cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc 
       -interaction=nonstopmode -silent -synctex=1 -pdf 
       pubs/conf-paper-1/paper.tex
     deps:
