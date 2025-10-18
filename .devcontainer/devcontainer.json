@@ -1,7 +1,10 @@
 {
   "image": "ghcr.io/calkit/devcontainer:latest",
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/julialang/devcontainer-features/julia:1": {
+      "channel": "release"
+    }
   },
   "customizations": {
     "vscode": {
