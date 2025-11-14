@@ -14,7 +14,7 @@ stages:
     cmd: calkit check environment --name tex
     deps: []
     outs:
-      - .calkit/env-locks/tex.json:
+      - .calkit/env-locks/tex:
           cache: false
           persist: true
     always_changed: true
@@ -59,7 +59,7 @@ stages:
       pubs/conf-paper-1/paper.tex
     deps:
       - pubs/conf-paper-1/paper.tex
-      - .calkit/env-locks/tex.json
+      - .calkit/env-locks/tex
       - figures/circle-flow.png
       - figures/circle-forces.png
     outs:

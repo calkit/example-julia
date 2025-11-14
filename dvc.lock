@@ -35,19 +35,21 @@ stages:
   _check-env-tex:
     cmd: calkit check environment --name tex
     outs:
-    - path: .calkit/env-locks/tex.json
+    - path: .calkit/env-locks/tex
       hash: md5
-      md5: bb1df3bd963f21fe4bfe580f00891bbe
+      md5: bd3196d75baca1a8baef14ff75297497.dir
       size: 1171
+      nfiles: 1
   build-paper:
     cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc 
       -interaction=nonstopmode -silent -synctex=1 -pdf 
       pubs/conf-paper-1/paper.tex
     deps:
-    - path: .calkit/env-locks/tex.json
+    - path: .calkit/env-locks/tex
       hash: md5
-      md5: bb1df3bd963f21fe4bfe580f00891bbe
+      md5: bd3196d75baca1a8baef14ff75297497.dir
       size: 1171
+      nfiles: 1
     - path: figures/circle-flow.png
       hash: md5
       md5: 855f98b203cd4cb3ca9d95cb9ba7b451
@@ -63,28 +65,28 @@ stages:
     outs:
     - path: pubs/conf-paper-1/paper.pdf
       hash: md5
-      md5: afbfc3d22022848c57da7bbdafdfe7a8
-      size: 115037
+      md5: cf9c1c17415acddacd0b43c31b126640
+      size: 115490
   _clean-nb-run-notebook:
     cmd: calkit nb clean "notebooks/main.ipynb"
     deps:
     - path: notebooks/main.ipynb
       hash: md5
-      md5: 8cd869681877e51ef52b934016ee865e
-      size: 475522
+      md5: 366802d42602773ba52ca5f691a5201c
+      size: 1920
     outs:
     - path: .calkit/notebooks/cleaned/notebooks/main.ipynb
       hash: md5
-      md5: 6dd79385ea18587a2cee25225db731bc
-      size: 1934
+      md5: 366802d42602773ba52ca5f691a5201c
+      size: 1920
   run-notebook:
     cmd: calkit nb execute --environment main --no-check --language python --to 
       html "notebooks/main.ipynb"
     deps:
     - path: .calkit/notebooks/cleaned/notebooks/main.ipynb
       hash: md5
-      md5: 6dd79385ea18587a2cee25225db731bc
-      size: 1934
+      md5: 366802d42602773ba52ca5f691a5201c
+      size: 1920
     - path: Manifest.toml
       hash: md5
       md5: 8a058c34bcadc2cafeed5f0a04d72cc3
@@ -92,9 +94,9 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/main.ipynb
       hash: md5
-      md5: 680d63d59aef134b440e8d5444790e0b
-      size: 476845
+      md5: bb899db2d9b32b198b52a065a658d332
+      size: 476834
     - path: .calkit/notebooks/html/notebooks/main.html
       hash: md5
-      md5: f6dd7bf259a8c06a209b046c6229a083
-      size: 388196
+      md5: 0fe4cdd5a0e52b9dcecfab43a944be70
+      size: 388182
