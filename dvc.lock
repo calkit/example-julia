@@ -13,7 +13,7 @@ stages:
       md5: 8a058c34bcadc2cafeed5f0a04d72cc3
       size: 45917
   run-script:
-    cmd: calkit xenv -n main --no-check -- "include(\"scripts/main.jl\")"
+    cmd: calkit xenv -n main --no-check -- "scripts/main.jl"
     deps:
     - path: Manifest.toml
       hash: md5
@@ -45,8 +45,8 @@ stages:
     deps:
     - path: .calkit/env-locks/tex
       hash: md5
-      md5: ed58a39d5e6e448987f8b1bd24005874.dir
-      size: 1171
+      md5: 0d4f5124a2106f823bc96d6c87a324d8.dir
+      size: 1147
       nfiles: 1
     - path: figures/circle-flow.png
       hash: md5
@@ -63,8 +63,8 @@ stages:
     outs:
     - path: pubs/conf-paper-1/paper.pdf
       hash: md5
-      md5: 2a41268418825d1105100532b07d130c
-      size: 115454
+      md5: 67cd0cd25781494f121dc6eaffa763fd
+      size: 115154
   _clean-nb-run-notebook:
     cmd: calkit nb clean "notebooks/main.ipynb"
     deps:

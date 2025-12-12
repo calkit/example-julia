@@ -1,7 +1,6 @@
 stages:
   run-script:
-    cmd: calkit xenv -n main --no-check -- 
-      "include(\"scripts/main.jl\")"
+    cmd: calkit xenv -n main --no-check -- "scripts/main.jl"
     deps:
       - scripts/main.jl
       - Manifest.toml
