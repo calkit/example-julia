@@ -7,11 +7,10 @@ stages:
     outs:
       - figures/circle-flow.png
       - figures/circle-forces.png
-    desc: Automatically generated from the 'run-script' stage in 
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'run-script' stage in calkit.yaml.
+      Changes made here will be overwritten.
   run-notebook:
-    cmd: calkit nb execute --environment main --no-check --to html 
-      "notebooks/main.ipynb"
+    cmd: calkit nb execute --environment main --no-check --to html "notebooks/main.ipynb"
     deps:
       - .calkit/notebooks/cleaned/notebooks/main.ipynb
       - Manifest.toml
@@ -20,11 +19,10 @@ stages:
           cache: false
       - .calkit/notebooks/html/notebooks/main.html:
           cache: false
-    desc: Automatically generated from the 'run-notebook' stage in 
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'run-notebook' stage in calkit.yaml.
+      Changes made here will be overwritten.
   build-paper:
-    cmd: calkit latex build -e tex --no-check 
-      pubs/conf-paper-1/paper.tex
+    cmd: calkit latex build -e tex --no-check pubs/conf-paper-1/paper.tex
     deps:
       - pubs/conf-paper-1/paper.tex
       - .calkit/env-locks/tex
@@ -32,5 +30,5 @@ stages:
       - figures/circle-forces.png
     outs:
       - pubs/conf-paper-1/paper.pdf
-    desc: Automatically generated from the 'build-paper' stage in 
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'build-paper' stage in calkit.yaml.
+      Changes made here will be overwritten.
