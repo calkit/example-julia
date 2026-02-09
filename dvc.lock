@@ -78,13 +78,13 @@ stages:
       md5: 366802d42602773ba52ca5f691a5201c
       size: 1920
   run-notebook:
-    cmd: calkit nb execute --environment main --no-check --language python --to 
-      html "notebooks/main.ipynb"
+    cmd: calkit nb execute --environment main --no-check --to html 
+      "notebooks/main.ipynb"
     deps:
     - path: .calkit/notebooks/cleaned/notebooks/main.ipynb
       hash: md5
-      md5: 1b9883694cb90fedd15c97d784a668a7
-      size: 1863
+      md5: b7adac0f6341398b5fd19f616d6d18e4
+      size: 1849
     - path: Manifest.toml
       hash: md5
       md5: 8a058c34bcadc2cafeed5f0a04d72cc3
@@ -92,9 +92,9 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/notebooks/main.ipynb
       hash: md5
-      md5: 8aa0b732e4269821dac1a2b23f1ff7b9
-      size: 476848
+      md5: 37d2b649129e995ea24817b2c9676f38
+      size: 476834
     - path: .calkit/notebooks/html/notebooks/main.html
       hash: md5
-      md5: f6dd7bf259a8c06a209b046c6229a083
-      size: 388196
+      md5: 0fe4cdd5a0e52b9dcecfab43a944be70
+      size: 388182

@@ -10,8 +10,8 @@ stages:
     desc: Automatically generated from the 'run-script' stage in 
       calkit.yaml. Changes made here will be overwritten.
   run-notebook:
-    cmd: calkit nb execute --environment main --no-check --language 
-      python --to html "notebooks/main.ipynb"
+    cmd: calkit nb execute --environment main --no-check --to html 
+      "notebooks/main.ipynb"
     deps:
       - .calkit/notebooks/cleaned/notebooks/main.ipynb
       - Manifest.toml
